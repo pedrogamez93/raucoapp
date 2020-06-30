@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref = "/posts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ post?.title.rendered }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="post">
+    <img [src]="post.media_url" [style.width]="'100%'" *ngIf="post.media_url">
+    <ion-item>
+        <ion-item>
+          <!--<ion-button style="color:white; background-color: #339FFF"   (click)="addComment()"  >Te gusta </ion-button>-->
+      </ion-item>
+    </ion-item>
+    <div class="ion-text-justify" style="color: #5f5f5f;" [innerHTML]="post.content.rendered"></div>
+  </div>
+
+  <ion-item>
+      <ion-label position="floating">Mi comentario</ion-label>
+      <ion-textarea rows="5" [(ngModel)]="newComment"></ion-textarea>
+    </ion-item>
+    <ion-button expand="full" (click)="addComment()" [disabled]="newComment == ''">Agregar comentario</ion-button>
+  
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Comentarios</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let com of comments">
+        <ion-avatar slot="start">
+          <img [src]="com.author_avatar_urls['96']">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ com.author_name }}</h2>
+          <p [innerHTML]="com.content.rendered"></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+ 
+  </ion-content>
+
+

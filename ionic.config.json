@@ -1,0 +1,8 @@
+{
+  "name": "academyWordpress",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

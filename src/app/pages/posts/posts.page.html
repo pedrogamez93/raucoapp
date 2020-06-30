@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+     
+    </ion-buttons>
+    <ion-title>Noticias</ion-title>
+    <ion-buttons slot="end">
+      
+    </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+  <!--<ion-searchbar placeholder="Buscar" (ionChange)="searchChanged($event)" debounce="1000" [(ngModel)]="searchTerm"></ion-searchbar>
+-->
+  
+  <div *ngIf="totalPosts > 0" class="ion-text-center ion-padding">
+  Noticias {{ totalPosts }}
+</div>
+<!--
+<ion-card *ngFor="let post of posts">
+  <ion-card-header>
+    <ion-card-title [innerHTML]="post.title.rendered"></ion-card-title>
+    <ion-card-subtitle>{{ post.date_gmt | date }}</ion-card-subtitle>
+  </ion-card-header>
+  <img [src]="post.media_url" *ngIf="post.media_url" class="post-img">
+  <ion-card-content>
+   
+    <div [innerHTML]="post.excerpt.rendered"></div>
+    <ion-button expand="full" fill="clear" [routerLink]="['/', 'posts', post.id]" text-right>Read More...</ion-button>
+  </ion-card-content>
+</ion-card>
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+  <ion-infinite-scroll-content loadingText="Loading more posts...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+-->
+
+<ion-card no-padding  *ngFor="let post of posts">
+  <ion-ripple-effect></ion-ripple-effect>
+ 
+ <ion-card-content class="ion-no-padding">
+     
+    <ion-row> 
+        <ion-col> <img [src]="post.media_url" *ngIf="post.media_url" class="post-img"></ion-col>   
+        <ion-col class="ion-text-justify"  style="margin:5%"><ion-label [innerHTML]="post.title.rendered"></ion-label>
+        
+          <ion-row> 
+              <ion-col ><ion-icon name="time-outline"></ion-icon></ion-col> 
+              <ion-col style="margin-left:-7em"> <h3>{{ post.date_gmt | date }} </h3></ion-col>
+             </ion-row>
+        
+        </ion-col>   
+  
+        
+      </ion-row>
+    
+       
+           
+       
+     <ion-button color="tertiary" expand="full" fill="clear" [routerLink]="['/', 'posts', post.id]" text-right> <h3>Ver mas</h3></ion-button>
+  </ion-card-content>
+</ion-card>
+
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-button color="light" expand="full" fill="clear" >
+      <ion-icon name="share" slot="start"></ion-icon> raucoactivo@gmail.com
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
